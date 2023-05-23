@@ -1,9 +1,14 @@
 pipeline {
+    triggers {
+        cron('0 1 * * *')
+    }
+    
     agent any
     tools { 
         maven 'Maven'
         jdk 'JDK'
     }
+    
     stages {
         stage ('Initialize') {
             steps {
@@ -48,6 +53,7 @@ pipeline {
             }      
          }       
       }
+        
         stage ('DAST') {
             steps {
             sshagent(['zap']) {
