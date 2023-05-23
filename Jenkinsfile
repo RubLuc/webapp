@@ -50,9 +50,9 @@ pipeline {
             steps {
             sshagent(['tomcat']) {
                 sh 'scp -o StrictHostKeyChecking=no target/*.war student@172.16.0.11:/opt/tomcat/apache-tomcat-9.0.75/webapps/webapp.war'
-            }      
-         }       
-      }
+              }      
+           }       
+        }
         
         stage ('DAST') {
             steps {
